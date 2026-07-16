@@ -8,9 +8,9 @@ from Bio import SeqIO
 from pandas.core.frame import DataFrame
 
 parser = argparse.ArgumentParser(description='PairAMG: host-context-aware interpretation on roles of viral auxiliary metabolic genes\n')
-parser.add_argument('--input_viral', '-viral', type=str, help='root of viral genomes (.fasta/ .fa) or viral KO lists (.txt)')
-parser.add_argument('--input_host', '-host', type=str, help='root of host genomes (.fasta/ .fa) or host KO lists (.txt)')
-parser.add_argument('--input_viral_host_link_file', '-link', type=str, help='path of viral-host link file (.csv)')
+parser.add_argument('--input_viral', '-viral', type=str, help='root of viral genomes (.fasta/ .fa) or viral KO lists (.txt)', default='')
+parser.add_argument('--input_host', '-host', type=str, help='root of host genomes (.fasta/ .fa) or host KO lists (.txt)', default='')
+parser.add_argument('--input_viral_host_link_file', '-link', type=str, help='path of viral-host link file (.csv)', default='')
 parser.add_argument('--database', '-d', type=str, help='database directory', default='./database/')
 parser.add_argument('--mode', '-m', type=int, help='mode of running PairAMG (0: end-to-end 1: only viral AMG identification 2: only viral AMG function interpretation', default=0)
 parser.add_argument('--input_type', '-t', type=int, help='type of input (0: require purification on viral AMG candidates 1: without purification on viral AMG candidates ', default=0)
@@ -24,6 +24,9 @@ root_database = inputs.database
 mode = inputs.mode
 input_type = inputs.input_type
 result_root = inputs.output
+
+if not os.path.exists(result_root):
+    os.makedirs(result_root)
 
 '''
 ========================================================
@@ -358,6 +361,15 @@ if mode == 0:
 elif mode == 1:
     for _, _, filelists in os.walk(viral_root):
         if len(filelists) == 0:
+            print('Error: Empty root for viral genomes')
+            exit(1)
+    if result_root == '':
+        print('Error: Not specified root for output')
+        exit(1)
+        
+elif mode == 2:
+    for _, _, filelists in os.walk(viral_root):
+        if len(filelists) == 0:
             print('Error: Empty root for viral KO sets')
             exit(1)
     for _, _, filelists in os.walk(host_root):
@@ -371,15 +383,6 @@ elif mode == 1:
         print('Error: Not specified root for output')
         exit(1)
         
-elif mode == 2:
-    for _, _, filelists in os.walk(viral_root):
-        if len(filelists) == 0:
-            print('Error: Empty root for viral genomes')
-            exit(1)
-    if result_root == '':
-        print('Error: Not specified root for output')
-        exit(1)
-
 else:
     print('Error: invalid mode')
     exit(1)
@@ -414,7 +417,7 @@ if mode==2:
     
     output = []
 
-    list_data = pd.read_csv(link_path)
+    list_data = pd.read_csv(link_path, header=None)
     for i in range(len(list_data)):
         viral = list_data.iloc[i,0]
         host = list_data.iloc[i,1]
@@ -700,7 +703,7 @@ if mode==2:
     f.close()
 
     if len(output)>0:
-        data = pd.read_csv(save_path, sep='\t')
+        data = pd.read_csv(save_path, sep='\t', header=None)
         data.columns = ['Viral', 'Host', 'Module', 'Equation_module', 'Definition_module', 'Pattern', 'Pathway_blocks', 'Viral_supported_blocks', 'Host_supported_blocks', 'Union_supported_blocks']
         save_path = result_root + 'module_completeness_pattern.tsv'
         data.to_csv(save_path, sep='\t', index=False, header=True)
@@ -708,9 +711,11 @@ if mode==2:
         data = pd.DataFrame(columns = ['Viral', 'Host', 'Module', 'Equation_module', 'Definition_module', 'Pattern', 'Pathway_blocks', 'Viral_supported_blocks', 'Host_supported_blocks', 'Union_supported_blocks'])
         save_path = result_root + 'module_completeness_pattern.tsv'
         data.to_csv(save_path, sep='\t', index=False, header=True)
-    
+     
     print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + ' Finish')
     print('-------------------------------------------------------------------------------------------------\n')
+    
+    exit(1)
 
 '''
 =======================================================================
@@ -2445,7 +2450,7 @@ elif input_type==1:
     viral_root = result_root + 'viral_KO_summary/'
     host_root = result_root + 'host_KO_summary/'
 
-    list_data = pd.read_csv(link_path)
+    list_data = pd.read_csv(link_path, header=None)
     for i in range(len(list_data)):
         viral = list_data.iloc[i,0]
         host = list_data.iloc[i,1]
@@ -2734,7 +2739,7 @@ for line in output:
 f.close()
 
 if len(output)>0:
-    data = pd.read_csv(save_path, sep='\t')
+    data = pd.read_csv(save_path, sep='\t', header=None)
     data.columns = ['Viral', 'Host', 'Module', 'Equation_module', 'Definition_module', 'Pattern', 'Pathway_blocks', 'Viral_supported_blocks', 'Host_supported_blocks', 'Union_supported_blocks']
     save_path = result_root + 'module_completeness_pattern.tsv'
     data.to_csv(save_path, sep='\t', index=False, header=True)
