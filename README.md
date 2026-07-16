@@ -67,7 +67,7 @@ k141_5   bin.8
 ```
 ## 3. Quick start
 * Download the sample data and unzip the file to foloder sample/
-* ```Linux
+```Linux
 unzip sample.zip
 ```
 * Run PairAMG for end-to-end function interpretation of viral auxiliary metabolic genes
