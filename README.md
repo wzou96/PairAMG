@@ -23,8 +23,8 @@ unzip database.zip
 python init.py
 ```
 ## 2. Prepare the required input files
-* Upload the viral sequences (suggested: viral/) and host genomes (suggested: MAG/) to different foloders 
-* Upload the predicted link file (.csv)
+* Upload the viral sequences (.fa/ .fasta) and host genomes (.fa/ .fasta) to different foloders (e.g. viral/ and MAG/)
+* Upload the predicted link file (.csv)  
 Note: The link file should not contain header and the first column refers to the viral sequence id and the second column refers to the host genome file name
 ## 3. Quick start
 * Run PairAMG for end-to-end function interpretation of viral auxiliary metabolic genes
