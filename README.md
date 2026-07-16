@@ -35,8 +35,24 @@ python init.py
 python [-viral VIRAL_ROOT] [-host HOST_ROOT] [-link LINK_PATH] [-m MODE] [-t INPUT_TYPE]
 ```
 * Options: PairAMG supports different running modes for function interpretation of viral auxiliary genes
-```Linux
--viral root of viral genomes (mode 1 and 2) or viral KO lists (mode 3)
 ```
-## 4. Helps
+  --input_viral VIRAL_ROOT
+                        Root the viral sequences or KO sets
+  --input_host HOST_ROOT
+                        The path of the output directory
+  --filename FILENAME
+                        Custom name for output files (option)
+  --database DATABASE
+                        Model directory
+  --len LEN
+                        Predict only for sequences >= len bp (default: 500)
+  --batch_size BATCH_SIZE
+                        Batch size for prediction (default: 16)
+  --threshold THRESHOLD
+                        Threshold for prediction (default: 0.5)
+  --force
+                        Force overwrite of the output directory if it exists (option)
+```
+## 4. Output explanation
+## 5. Helps
 * If you have any questions about the usage of PairAMG, please feel free to contact Wei Zou. (Email: [weizou-c@my.cityu.edu.hk](weizou-c@my.cityu.edu.hk))
