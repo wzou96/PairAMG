@@ -4,7 +4,7 @@ PairAMG: host-context-aware interpretation on roles of viral auxiliary metabolic
 ## 1. Setup environment
 Note: We suggest install all the required packages using Conda
 * Clone the repository to the local.
-* ```Linux
+```Linux
 git clone https://github.com/wzou96/PairAMG
 cd PairAMG
 ```
