@@ -27,12 +27,13 @@ python init.py
   
 *Note:* Each viral sequence should be uploaded seperately and renamed with sequence id
 
-* If the user only wants to perform function interpretation, upload the viral KO sets (.txt) abd host KO sets (.txt) to different folder (e.g. viral/ and MAG/)  
+* If the user only wants to perform function interpretation, upload the viral KO sets (.txt) and host KO sets (.txt) to different folder (e.g. viral/ and MAG/)  
 
 *Note:* Each KO set file should   
 * Upload the predicted link file (.csv)  
   
 *Note:* The link file should not contain header and the first column refers to the viral sequence id and the second column refers to the host genome file name
+|Viral sequence|Host genomes|
 ## 3. Quick start
 * Run PairAMG for end-to-end function interpretation of viral auxiliary metabolic genes
 ```Python
