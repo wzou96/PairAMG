@@ -22,3 +22,20 @@ unzip database.zip
 ```Python
 python init.py
 ```
+## 2. Quick start
+  --input INPUT_FA
+                        The name of your input file (FASTA format)
+  --output OUTPUT_PTH
+                        The path of the output directory
+  --filename FILENAME
+                        Custom name for output files (option)
+  --database DATABASE
+                        Model directory
+  --len LEN
+                        Predict only for sequences >= len bp (default: 500)
+  --batch_size BATCH_SIZE
+                        Batch size for prediction (default: 16)
+  --threshold THRESHOLD
+                        Threshold for prediction (default: 0.5)
+  --force
+                        Force overwrite of the output directory if it exists (option)
