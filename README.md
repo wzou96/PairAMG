@@ -66,6 +66,7 @@ k141_2   bin.4
 k141_5   bin.8
 ```
 ## 3. Quick start
+* Download the sample data and unzip the file to foloder sample/
 * Run PairAMG for end-to-end function interpretation of viral auxiliary metabolic genes
 ```Python
 python [-viral VIRAL_ROOT] [-host HOST_ROOT] [-link LINK_PATH] [-d DATABASE] [-m MODE] [-t INPUT_TYPE] [-O OUTPUT_ROOT]
