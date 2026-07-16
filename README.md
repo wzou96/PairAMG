@@ -2,7 +2,7 @@
 PairAMG: host-context-aware interpretation on roles of viral auxiliary metabolic genes
 
 ## 1. Setup environment
-Note: We suggest install all the required packages using Conda
+*Note:* We suggest install all the required packages using Conda
 * Clone the repository to the local.
 ```Linux
 git clone https://github.com/wzou96/PairAMG
@@ -25,10 +25,10 @@ python init.py
 ## 2. Prepare the required input files
 * Upload the viral sequences (.fa/ .fasta) and host genomes (.fa/ .fasta) to different foloders (e.g. viral/ and MAG/)  
   
-Note: Each viral sequence should be uploaded seperately and renamed with sequence id
+*Note:* Each viral sequence should be uploaded seperately and renamed with sequence id
 * Upload the predicted link file (.csv)  
   
-Note: The link file should not contain header and the first column refers to the viral sequence id and the second column refers to the host genome file name
+*Note:* The link file should not contain header and the first column refers to the viral sequence id and the second column refers to the host genome file name
 ## 3. Quick start
 * Run PairAMG for end-to-end function interpretation of viral auxiliary metabolic genes
 ```Python
