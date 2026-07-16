@@ -26,32 +26,35 @@ python init.py
 * Upload the viral sequences (.fa/ .fasta) and host genomes (.fa/ .fasta) to different foloders (e.g. viral/ and MAG/)  
   
 *Note:* Each viral sequence should be uploaded seperately and renamed with sequence id
+
+* If the user only wants to perform function interpretation, upload the viral KO sets (.txt) abd host KO sets (.txt) to different folder (e.g. viral/ and MAG/)  
+
+*Note:* Each KO set file should   
 * Upload the predicted link file (.csv)  
   
 *Note:* The link file should not contain header and the first column refers to the viral sequence id and the second column refers to the host genome file name
 ## 3. Quick start
 * Run PairAMG for end-to-end function interpretation of viral auxiliary metabolic genes
 ```Python
-python [-viral VIRAL_ROOT] [-host HOST_ROOT] [-link LINK_PATH] [-m MODE] [-t INPUT_TYPE]
+python [-viral VIRAL_ROOT] [-host HOST_ROOT] [-link LINK_PATH] [-d DATABASE] [-m MODE] [-t INPUT_TYPE] [-O OUTPUT_ROOT]
 ```
 * Options: PairAMG supports different running modes for function interpretation of viral auxiliary genes
 ```
   --input_viral VIRAL_ROOT
-                        Root the viral sequences or KO sets
+                                 Root of the viral sequences or KO sets
   --input_host HOST_ROOT
-                        The path of the output directory
-  --filename FILENAME
-                        Custom name for output files (option)
-  --database DATABASE
-                        Model directory
-  --len LEN
-                        Predict only for sequences >= len bp (default: 500)
-  --batch_size BATCH_SIZE
-                        Batch size for prediction (default: 16)
-  --threshold THRESHOLD
-                        Threshold for prediction (default: 0.5)
-  --force
-                        Force overwrite of the output directory if it exists (option)
+                                 Root of the host genomes or KO sets
+  --input_link LINK_PATH
+                                 Path of the viral-host link file
+  --d DATABASE
+                                 Root of the required database (default: ./database/)
+  --m MODE
+                                 Mode of running PairAMG 0: End-to-end 1: Only viral AMG identification 2: Only viral AMG function interpretation (default: 0)
+  --t INPUT_TYPE
+                                 Type of input viral sequences 0: Require viral AMG candidates purification 1: Withput viral AMG candidates purification (default: 0)
+  --o OUTPUT_ROOT
+                                 Root of output files (default: ./result/)
+
 ```
 ## 4. Output explanation
 ## 5. Helps
