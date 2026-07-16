@@ -33,6 +33,7 @@ python init.py
 * Upload the predicted link file (.csv)  
   
 *Note:* The link file should not contain header and the first column refers to the viral sequence id and the second column refers to the host genome file name
+markdown
 |Viral sequence|Host genomes|
 ## 3. Quick start
 * Run PairAMG for end-to-end function interpretation of viral auxiliary metabolic genes
