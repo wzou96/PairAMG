@@ -95,17 +95,17 @@ python [-viral VIRAL_ROOT] [-host HOST_ROOT] [-link LINK_PATH] [-d DATABASE] [-m
 ```
 ## 4. Output explanation
 ```
-  --host_KO/                          Identified AMG candidates from each host genome
-  --host_KO_summary/                  Level C function category of AMG candidates identified from host genomes
-  --viral_KO/                         Identified AMG candidates from each viral sequences
-  --viral_KO_summary/                 Level C function category of AMG candidates identified from viral sequences
-  --viral_KO_no_microbial/            Purified viral AMG candidates that not flanked by microbial marker genes on either or both sides
-  --viral_KO_category_1/              Purified viral AMG candidates that flanked by viral marker genes on either or both sides
-  --viral_KO_category_1_summary/      Level C function category of purified viral AMG candidates
-  --viral_KO_category_2/              Purified viral AMG candidates that flanked by viral marker genes on both sides
-  --viral_KO_category_2_summary/      Level C function category of purified viral AMG candidates
-  --module_completeness_pattern.tsv   Identified completeness and patterns of metabolic pathways related to viral AMGs
-  --module_completeness_pattern.txt   Identified completeness and patterns of metabolic pathways related to viral AMGs
+  ----host_KO/                          Identified AMG candidates from each host genome
+  ----host_KO_summary/                  Level C function category of AMG candidates identified from host genomes
+  ----viral_KO/                         Identified AMG candidates from each viral sequences
+  ----viral_KO_summary/                 Level C function category of AMG candidates identified from viral sequences
+  ----viral_KO_no_microbial/            Purified viral AMG candidates that not flanked by microbial marker genes on either or both sides
+  ----viral_KO_category_1/              Purified viral AMG candidates that flanked by viral marker genes on either or both sides
+  ----viral_KO_category_1_summary/      Level C function category of purified viral AMG candidates
+  ----viral_KO_category_2/              Purified viral AMG candidates that flanked by viral marker genes on both sides
+  ----viral_KO_category_2_summary/      Level C function category of purified viral AMG candidates
+  ----module_completeness_pattern.tsv   Identified completeness and patterns of metabolic pathways related to viral AMGs
+  ----module_completeness_pattern.txt   Identified completeness and patterns of metabolic pathways related to viral AMGs
 ```
 ## 5. Helps
 * If you have any questions about the usage of PairAMG, please feel free to contact Wei Zou. (Email: [weizou-c@my.cityu.edu.hk](weizou-c@my.cityu.edu.hk))
