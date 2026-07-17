@@ -63,7 +63,7 @@ K00325
 
 ```
 ./link.csv
-k141_850845_length_6808_cov_7.0000	      RW_co-bin.49
+k141_850845_length_6808_cov_7.0000          RW_co-bin.49
 k141_1568307_length_10231_cov_23.0000	    RW_co-bin.32
 k141_1852972_length_9457_cov_27.4271	    RW_co-bin.30
 ```
