@@ -23,47 +23,49 @@ unzip database.zip
 python init.py
 ```
 ## 2. Prepare the required input files
-* Upload the viral sequences (.fa/ .fasta) and host genomes (.fa/ .fasta) to different foloders (e.g. viral/ and MAG/)  
+* Upload the viral sequences (.fa/ .fasta) and host genomes (.fa/ .fasta) to different foloders (e.g. sample_viral/ and sample_host/)  
   
 *Note:* Each viral sequence should be uploaded seperately and renamed with sequence id
 ```
-./viral/
-k141_1.fa
-k141_8.fa
-k141_22.fa
+./sample_viral/
+k141_850845_length_6808_cov_7.0000.fa
+k141_1568307_length_10231_cov_23.0000.fa
+k141_1852972_length_9457_cov_27.4271..fa
 ```
 ```
-./MAG/
-bin.1.fasta
-bin.20.fasta
-bin.33.fasta
+./sample_host/
+RW_co-bin.30.fasta
+RW_co-bin.32.fasta
+RW_co-bin.49.fasta
 ```
-* If the user only wants to perform function interpretation, upload the viral KO sets (.txt) and host KO sets (.txt) to different folder (e.g. viral/ and MAG/)  
+* If the user only wants to perform function interpretation, upload the viral KO sets (.txt) and host KO sets (.txt) to different folder (e.g. sample_viral_KO_set/ and sample_host_KO_set/)  
 
 *Note:* Each KO set file should be uploaded seperately and renamed with sequence id. In the KO set file, **each KO should be separated into different rows**.
 
 ```
-./viral/k141_1.txt
-K00001
-K00002
-K00003
+./sample_viral_KO_set/k141_850845_length_6808_cov_7.0000.txt
+K13990
 ```
 ```
-./viral/k141_2.txt
-K00011
-K00022
-K00033
+./sample_viral_KO_set/k141_1568307_length_10231_cov_23.0000.txt
+K00286
 ```
-
+```
+./sample_viral_KO_set/k141_1852972_length_9457_cov_27.4271.txt
+K00611
+K00324
+K00324
+K00325
+```
 * Upload the predicted link file (.csv)  
   
 *Note:* The link file **should not contain header** and the first column refers to the viral sequence id and the second column refers to the host genome file name
 
 ```
 ./link.csv
-k141_1   bin.2
-k141_2   bin.4
-k141_5   bin.8
+k141_850845_length_6808_cov_7.0000	      RW_co-bin.49
+k141_1568307_length_10231_cov_23.0000	    RW_co-bin.32
+k141_1852972_length_9457_cov_27.4271	    RW_co-bin.30
 ```
 ## 3. Quick start
 * Download the sample data and unzip the file to foloder sample/
