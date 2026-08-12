@@ -14,7 +14,7 @@ conda env create -f requirements.yaml -n PairAMG
 conda activate PairAMG
 ```
 * Download the required database and unzip the file to folder database/.
-https://drive.google.com/file/d/18KxGKXL0agmXpyO6zBtw_OyqdlCKrRWm/view?usp=drive_link
+https://drive.google.com/file/d/1TenEaymtr44TAyOJRNoYZeTLpu-bWvjH/view?usp=drive_link
 ```Linux
 unzip database.zip
 ```
