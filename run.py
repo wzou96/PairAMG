@@ -77,28 +77,92 @@ def substep_split(str_module):
 
 def find_match_branch(step, KOs):
     flag = False
-    branches = step[1:-1].split(',')
-    for branch in branches:
-        if ' ' in branch:
-            keys = branch.split(' ')
-            subflag = True
-            for key in keys:
-                if key not in KOs:
-                    subflag = False
-            if subflag:
-                flag = True
-        else:
-            if '-' in branch:
-                if len(branch.split('-')[-1])>6 and '+' in branch.split('-')[-1]:
-                    branch = branch.split('-')[0] + branch.split('-')[-1][6:]
-                else:
-                    branch = branch.split('-')[0]
-            if '+' in branch:
-                if find_match_combination(branch, KOs):
+    if step.count('(')==1 and step.count(')')==1:
+        branches = step[1:-1].split(',')
+        for branch in branches:
+            if ' ' in branch:
+                keys = branch.split(' ')
+                subflag = True
+                for key in keys:
+                    if key not in KOs:
+                        subflag = False
+                if subflag:
                     flag = True
             else:
-                if branch in KOs:
-                    flag = True
+                if '-' in branch:
+                    if len(branch.split('-')[-1])>6 and '+' in branch.split('-')[-1]:
+                        branch = branch.split('-')[0] + branch.split('-')[-1][6:]
+                    else:
+                        branch = branch.split('-')[0]
+                if '+' in branch:
+                    if find_match_combination(branch, KOs):
+                        flag = True
+                else:
+                    if branch in KOs:
+                        flag = True
+    else:
+        branches = []
+        list_branches = step[1:-1].split(',')
+        temp = ''
+        i = 0
+        while i < len(list_branches):
+            if '(' in list_branches[i] or ')' in list_branches[i]:
+                temp = list_branches[i]
+                j = 1
+                while temp.count('(') != temp.count(')'):
+                    temp += ','
+                    temp += list_branches[i + j]
+                    j += 1
+                branches.append(temp)
+                i += j
+            else:
+                branches.append(list_branches[i])
+                i += 1
+
+        for branch in branches:
+            if ' ' in branch:
+                if branch[0]=='(' and branch[-1]==')':
+                    keys = step_split(branch[1:-1])
+                    subflag = True
+                    for key in keys:
+                        if key.startswith('('):
+                            if not find_match_branch(key, KOs):
+                                subflag = False
+                        else:
+                            if key not in KOs:
+                                subflag = False
+                    if subflag:
+                        flag = True
+                else:
+                    keys = step_split(branch)
+                    subflag = True
+                    for key in keys:
+                        if key.startswith('('):
+                            if not find_match_branch(key, KOs):
+                                subflag = False
+                        else:
+                            if key not in KOs:
+                                subflag = False
+                    if subflag:
+                        flag = True
+            else:
+                if branch.startswith('('):
+                    if find_match_branch(branch, KOs):
+                        flag = True
+                    else:
+                        flag = False
+                else:
+                    if '-' in branch:
+                        if len(branch.split('-')[-1])>6 and '+' in branch.split('-')[-1]:
+                            branch = branch.split('-')[0] + branch.split('-')[-1][6:]
+                        else:
+                            branch = branch.split('-')[0]
+                    if '+' in branch:
+                        if find_match_combination(branch, KOs):
+                            flag = True
+                    else:
+                        if branch in KOs:
+                            flag = True
     return flag
 
 
@@ -305,11 +369,16 @@ def find_match_step(step, KOs):
         else:
             if step.startswith('-'):
                 return True
+            if '-' in step:
+                if len(step.split('-')[-1]) > 6 and '+' in step.split('-')[-1]:
+                    step = step.split('-')[0] + step.split('-')[-1][6:]
+                else:
+                    step = step.split('-')[0]
             if step in KOs:
                 return True
             else:
                 return False
-
+                
 
 '''
 ========================================================
