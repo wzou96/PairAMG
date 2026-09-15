@@ -1412,7 +1412,8 @@ save_root = result_root + 'viral_KO_summary/'
 
 if not os.path.exists(save_root):
         os.makedirs(save_root)
-        
+
+output_csv = []        
 for _, _, filelists in os.walk(old_root):
     for file in filelists:
     
@@ -1421,8 +1422,8 @@ for _, _, filelists in os.walk(old_root):
 
         count_KO = {}
         for line in data:
-            
             KO = line.rstrip().split('\t')[-1]
+            output_csv.append(line.rstrip() + '\t' + ('\t').join(dict_function[KO]) + '\n')
             if KO not in count_KO:
                 count_KO[KO] = 1
             else:
@@ -1442,6 +1443,18 @@ for _, _, filelists in os.walk(old_root):
         for line in output:
             f.write(line)
         f.close()
+        
+if len(output_csv)>0:        
+    csv_path = result_root + 'viral_KO_summary.txt'
+    f = open(csv_path, 'w')
+    for line in output_csv:
+        f.write(line)
+    f.close()
+
+if len(output_csv)>0:
+    data = pd.read_csv(csv_path, sep='\t', header=None)
+    save_path = result_root + 'viral_KO_summary.tsv'
+    data.to_csv(save_path, sep='\t', index=False, header=False)
 
 print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + ' Finish')
 print('-------------------------------------------------------------------------------------------------\n')  
@@ -1713,6 +1726,7 @@ if input_type==0:
     if not os.path.exists(save_root):
         os.makedirs(save_root)
     
+    output_csv = []   
     for _, _, filelists in os.walk(old_root):
         for file in filelists:
         
@@ -1723,6 +1737,7 @@ if input_type==0:
             for line in data:
                 
                 KO = line.rstrip().split('\t')[-1]
+                output_csv.append(line.rstrip() + '\t' + ('\t').join(dict_function[KO]) + '\n')
                 if KO not in count_KO:
                     count_KO[KO] = 1
                 else:
@@ -1742,6 +1757,19 @@ if input_type==0:
             for line in output:
                 f.write(line)
             f.close()
+            
+    if len(output_csv)>0:
+        csv_path = result_root + 'viral_KO_category_1_summary.txt'
+        f = open(csv_path, 'w')
+        for line in output_csv:
+            f.write(line)
+        f.close()
+    
+    if len(output_csv)>0:
+        data = pd.read_csv(csv_path, sep='\t', header=None)
+        save_path = result_root + 'viral_KO_category_1_summary.tsv'
+        data.to_csv(save_path, sep='\t', index=False, header=False)
+
     
     # 4: summarize the level C function category of viral AMG candidates flanked by viral hallmark gene on both sides
     
@@ -1751,6 +1779,7 @@ if input_type==0:
     if not os.path.exists(save_root):
         os.makedirs(save_root)
     
+    output_csv = []  
     for _, _, filelists in os.walk(old_root):
         for file in filelists:
         
@@ -1761,6 +1790,7 @@ if input_type==0:
             for line in data:
                 
                 KO = line.rstrip().split('\t')[-1]
+                output_csv.append(line.rstrip() + '\t' + ('\t').join(dict_function[KO]) + '\n')
                 if KO not in count_KO:
                     count_KO[KO] = 1
                 else:
@@ -1780,6 +1810,18 @@ if input_type==0:
             for line in output:
                 f.write(line)
             f.close()
+    
+    if len(output_csv)>0:
+        csv_path = result_root + 'viral_KO_category_2_summary.txt'
+        f = open(csv_path, 'w')
+        for line in output_csv:
+            f.write(line)
+        f.close()
+    
+    if len(output_csv)>0:
+        data = pd.read_csv(csv_path, sep='\t', header=None)
+        save_path = result_root + 'viral_KO_category_2_summary.tsv'
+        data.to_csv(save_path, sep='\t', index=False, header=False)
         
     print(time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + ' Finish')
     print('-------------------------------------------------------------------------------------------------')  
