@@ -75,7 +75,7 @@ unzip sample.zip
 ```
 * Run PairAMG for end-to-end function interpretation of viral auxiliary metabolic genes
 ```Python
-python [-viral VIRAL_ROOT] [-host HOST_ROOT] [-link LINK_PATH] [-d DATABASE] [-m MODE] [-t INPUT_TYPE] [-O OUTPUT_ROOT]
+python run.py [-viral VIRAL_ROOT] [-host HOST_ROOT] [-link LINK_PATH] [-d DATABASE] [-m MODE] [-t INPUT_TYPE] [-O OUTPUT_ROOT]
 ```
 * Options: PairAMG supports different running modes for function interpretation of viral auxiliary genes
 ```
